@@ -74,13 +74,21 @@ namespace UniqueHues
         public void low_arrow_select()
         {
             if (thisTrial.end_staircase == true) { this.Close(); }
-            else { thisTrial.continueStaircase(1); trial_count++; }
+            else 
+            { 
+                thisTrial.continueStaircase(1); trial_count++;
+                if (thisTrial.end_staircase == true) { this.Close(); }
+            }
         }
 
         public void high_arrow_select_()
         {
             if (thisTrial.end_staircase == true) { this.Close(); }
-            else { thisTrial.continueStaircase(2); trial_count++; }
+            else
+            {
+                thisTrial.continueStaircase(2); trial_count++;
+                if (thisTrial.end_staircase == true) { this.Close(); }
+            }
         }
 
         private void ForcedChoiceForm_Load(object sender, EventArgs e)

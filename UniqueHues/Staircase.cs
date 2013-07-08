@@ -90,12 +90,15 @@ namespace StaircaseProgram
             }
 
             updateWavelength(button_choice);
-            // close the shutter and pause 1.5sec
-            closeShutter();
-            Thread.Sleep(1500);
-            // update gooch and then open shutter
-            updateGooch();
-            openShutter();
+            if (!end_staircase)
+            {
+                // close the shutter and pause 1.5sec
+                closeShutter();
+                Thread.Sleep(1500);
+                // update gooch and then open shutter
+                updateGooch();
+                openShutter();
+            }
 
         }
 
@@ -224,16 +227,19 @@ namespace StaircaseProgram
                     active_wavelength = "high";
                 }
             }
+            // handle case when max reached for high reversals
             if (high_reversals == max_reversals && low_reversals < max_reversals)
             {
                 current_wavelength = wavelength_lower;
                 active_wavelength = "low";
             }
+            // handle case when max reached for low reversals
             if (low_reversals == max_reversals && high_reversals < max_reversals)
             {
                 current_wavelength = wavelength_upper;
                 active_wavelength = "high";
             }
+            // handle case when max reached for both low and high reversals 
             if (low_reversals == max_reversals && high_reversals == max_reversals)
             {
                 endStaircase();
@@ -249,7 +255,8 @@ namespace StaircaseProgram
 
         public void endStaircase()
         {
-            s_OL490.CloseShutter();
+            clearGooch();
+            closeShutter();
 
             // save results to file
             string name;
