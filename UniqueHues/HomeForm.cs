@@ -35,7 +35,7 @@ namespace UniqueHues
         private void button1_Click(object sender, EventArgs e)
         {
             string subject_name = this.textBox1.Text;
-
+            // make sure form set to null to clear previous instance
             ForcedChoiceForm form = new ForcedChoiceForm(uniqueHue, subject_name);
 
             string label1_text = "";

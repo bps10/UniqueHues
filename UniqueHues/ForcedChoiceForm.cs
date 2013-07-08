@@ -13,15 +13,10 @@ namespace UniqueHues
 {
     public partial class ForcedChoiceForm : Form
     {
-        public static double trial_count = 0;
-        public static char low_key = 'o';
-        public static char high_key = 'o';
-        private static StaircaseProgram.Staircase thisTrial;
-
-        ~ForcedChoiceForm()
-        {
-            
-        }
+        private static double trial_count;
+        private static char low_key;
+        private static char high_key;
+        private static StaircaseProgram.Staircase thisTrial = null;
 
         public ForcedChoiceForm(string uniqueHue, string subject_name)
         {
@@ -29,6 +24,9 @@ namespace UniqueHues
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
 
+            trial_count = 0;
+            low_key = 'o';
+            high_key = 'o';
 
             thisTrial = new StaircaseProgram.Staircase();
             thisTrial.RunStaircase(uniqueHue, subject_name);

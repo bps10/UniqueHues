@@ -19,25 +19,32 @@ namespace StaircaseProgram
         private const double intensity = 100;
 
         private static OL490SdkLibrary s_OL490 = new OL490SdkLibrary();
-        private static bool s_ShutterOpen = false;
+        private static bool s_ShutterOpen;
 
         private static Random random = new Random();
         private static int randomNumber;
         private static bool lowWavelength;
 
-        private static string high_data_record = "";
-        private static string low_data_record = "";
+        private static string high_data_record;
+        private static string low_data_record;
 
-        public static string subject_name = "name";
-        public static string active_wavelength = "none";
-        public static int high_reversals = 0;
-        public static int low_reversals = 0;
+        public static string subject_name;
+        public static string active_wavelength;
+        public static int high_reversals;
+        public static int low_reversals;
         public static int max_reversals = 10;
 
         public bool end_staircase;
 
         public Staircase()
         {
+            subject_name = "name";
+            active_wavelength = "none";
+            high_reversals = 0;
+            low_reversals = 0;
+            high_data_record = "";
+            low_data_record = "";
+            s_ShutterOpen = false;
         }
 
         public void RunStaircase(string uniqueHue, string sub_name)
@@ -129,14 +136,14 @@ namespace StaircaseProgram
 
         private void updateWavelength(int button_choice)
         {
-            int step_size = 2;
+            int step_size = 1;
             int step = 0;
 
             if (active_wavelength == "high")
             {
                 if (high_reversals < 1) { step_size = 8; }
                 else if (high_reversals >= 1 && high_reversals < 4) { step_size = 3; }
-                else { step_size = 2; }
+                else { step_size = 1; }
 
                 if (button_choice == 2)
                 {
@@ -157,7 +164,7 @@ namespace StaircaseProgram
             {
                 if (low_reversals < 1) { step_size = 8; }
                 else if (low_reversals >= 1 && low_reversals < 4) { step_size = 3; }
-                else { step_size = 2; }
+                else { step_size = 1; }
 
                 if (button_choice == 1)
                 {
@@ -221,11 +228,19 @@ namespace StaircaseProgram
 
         public static void endStaircase()
         {
-            TextWriter tw = new StreamWriter("./data/" + subject_name + ".txt");
+            string name;
+            if (File.Exists("./data/" + subject_name + ".txt"))
+            {
+                name = "./data/" + subject_name + "_1.txt"; 
+            }
+            else { name = "./data/" + subject_name + ".txt"; }
+
+            TextWriter tw = new StreamWriter(name);
             tw.WriteLine(high_data_record + "\r\n\r\n" + low_data_record);
             tw.Close();
 
             s_OL490.CloseShutter();
+            s_ShutterOpen = false;
 
         }
 
