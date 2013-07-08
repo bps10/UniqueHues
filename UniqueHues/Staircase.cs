@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Text;
 using System.IO;
+using System.Threading;
 using OL490_SDK_Dll;
 using UniqueHues;
 
@@ -44,15 +45,24 @@ namespace StaircaseProgram
             low_reversals = 0;
             high_data_record = "";
             low_data_record = "";
-            s_ShutterOpen = false;
+            if (s_OL490.GetOL490ShutterState() == 1)
+            { 
+                s_ShutterOpen = true;
+            }
+            else if (s_OL490.GetOL490ShutterState() == 0)
+            { 
+                s_ShutterOpen = false;
+            }
         }
 
         public void RunStaircase(string uniqueHue, string sub_name)
         {
             // log subject name
             subject_name = sub_name;
+
             // initialize the gooch;
             initializeGooch();
+            clearGooch();
 
             // make sure end_staircase is false;
             end_staircase = false;
@@ -60,6 +70,8 @@ namespace StaircaseProgram
             selectStartingWavelength(uniqueHue);
             
             updateGooch();
+
+            openShutter();
 
         }
 
@@ -76,9 +88,14 @@ namespace StaircaseProgram
                 string data = current_wavelength.ToString() + "\t" + button_choice.ToString() + "\r\n";
                 low_data_record += data;
             }
-          
+
             updateWavelength(button_choice);
+            // close the shutter and pause 1.5sec
+            closeShutter();
+            Thread.Sleep(1500);
+            // update gooch and then open shutter
             updateGooch();
+            openShutter();
 
         }
 
@@ -92,7 +109,7 @@ namespace StaircaseProgram
 
                 s_OL490.SetGrayScaleValue(0);
 
-                openShutter();
+                //openShutter();
 
                 eErrorCodes calibration = s_OL490.LoadAndUseStoredCalibration(0);
             }
@@ -100,14 +117,21 @@ namespace StaircaseProgram
 
         private static void openShutter()
         {
-            if (!s_ShutterOpen) { s_OL490.OpenShutter(); s_ShutterOpen = true; }
+            s_OL490.OpenShutter(); 
+            s_ShutterOpen = true;
+        }
+
+        private static void closeShutter()
+        {
+            s_OL490.CloseShutter(); 
+            s_ShutterOpen = false;
         }
 
         private static void updateGooch()
         {
             clearGooch();
             eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, bandwidth, intensity);
-            print("Clearing Spectrum");
+            //print("Clearing Spectrum");
             processErrorCode("ClrSpectrum()", errCode);
 
         }
@@ -115,13 +139,10 @@ namespace StaircaseProgram
         private void selectStartingWavelength(string uniqueHue)
         {
             if (uniqueHue == "yellow") { wavelength_upper = 630; wavelength_lower = 550; }
-            if (uniqueHue == "blue") { wavelength_upper = 500; wavelength_lower = 400; }
+            if (uniqueHue == "blue") { wavelength_upper = 500; wavelength_lower = 430; }
             if (uniqueHue == "green") { wavelength_upper = 580; wavelength_lower = 480; }
 
-            choose_high_or_low();
-            choose_high_or_low();
-            if (active_wavelength == "high") { current_wavelength = wavelength_upper; }
-            if (active_wavelength == "low") { current_wavelength = wavelength_lower; }
+            setCurrentWavelength();
 
         }
 
@@ -226,21 +247,32 @@ namespace StaircaseProgram
 
         }
 
-        public static void endStaircase()
+        public void endStaircase()
         {
+            s_OL490.CloseShutter();
+
+            // save results to file
             string name;
             if (File.Exists("./data/" + subject_name + ".txt"))
             {
-                name = "./data/" + subject_name + "_1.txt"; 
+                if (!File.Exists("./data/" + subject_name + "_1.txt"))
+                {
+                    name = "./data/" + subject_name + "_1.txt";
+                }
+                else if (!File.Exists("./data/" + subject_name + "_2.txt"))
+                {
+                    name = "./data/" + subject_name + "_2.txt";
+                }
+                else
+                {
+                    name = "./data/" + subject_name + "_3.txt";
+                }
             }
             else { name = "./data/" + subject_name + ".txt"; }
 
             TextWriter tw = new StreamWriter(name);
             tw.WriteLine(high_data_record + "\r\n\r\n" + low_data_record);
             tw.Close();
-
-            s_OL490.CloseShutter();
-            s_ShutterOpen = false;
 
         }
 

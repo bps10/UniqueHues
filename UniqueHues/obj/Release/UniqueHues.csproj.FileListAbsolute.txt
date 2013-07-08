@@ -12,3 +12,6 @@ C:\Users\Jay\Desktop\UniqueHues\UniqueHues\bin\Release\OLIPluginLibrary.dll
 C:\Users\Jay\Desktop\UniqueHues\UniqueHues\obj\Release\UniqueHues.csprojResolveAssemblyReference.cache
 C:\Users\Jay\Desktop\UniqueHues\UniqueHues\obj\Release\UniqueHues.exe
 C:\Users\Jay\Desktop\UniqueHues\UniqueHues\obj\Release\UniqueHues.pdb
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Release\UniqueHues.exe.config
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.exe
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.pdb

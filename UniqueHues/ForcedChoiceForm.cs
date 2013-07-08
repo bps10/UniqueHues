@@ -39,6 +39,7 @@ namespace UniqueHues
             if (key == 1) { low_key = 'g'; }
             if (key == 2) { low_key = 'r'; }
             if (key == 3) { low_key = 'y'; }
+            if (key == 4) { low_key = 'p'; }
         }
 
         public void changeLabel5text(string labelText, int key)
@@ -48,6 +49,7 @@ namespace UniqueHues
             if (key == 1) { high_key = 'g'; }
             if (key == 2) { high_key = 'r'; }
             if (key == 3) { high_key = 'y'; }
+            if (key == 4) { high_key = 'p'; }
         }
 
         // Detect all numeric characters at the form level and consume 1,  

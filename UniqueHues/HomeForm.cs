@@ -50,7 +50,7 @@ namespace UniqueHues
             }
             if (uniqueHue == "blue")
             {
-                label1_text = "'r' = too red"; key1 = 2;
+                label1_text = "'p' = too purple"; key1 = 4;
                 label2_text = "'g' = too green"; key2 = 1;
             }
             if (uniqueHue == "green")
