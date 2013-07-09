@@ -260,22 +260,23 @@ namespace StaircaseProgram
 
             // save results to file
             string name;
-            if (File.Exists("./data/" + subject_name + ".txt"))
+            string dir = "C:/Users/Jay/Desktop/UniqueHues_Data/";
+            if (File.Exists(dir + subject_name + ".txt"))
             {
-                if (!File.Exists("./data/" + subject_name + "_1.txt"))
+                if (!File.Exists(dir + subject_name + "_1.txt"))
                 {
-                    name = "./data/" + subject_name + "_1.txt";
+                    name = dir + subject_name + "_1.txt";
                 }
-                else if (!File.Exists("./data/" + subject_name + "_2.txt"))
+                else if (!File.Exists(dir + subject_name + "_2.txt"))
                 {
-                    name = "./data/" + subject_name + "_2.txt";
+                    name = dir + subject_name + "_2.txt";
                 }
                 else
                 {
-                    name = "./data/" + subject_name + "_3.txt";
+                    name = dir + subject_name + "_3.txt";
                 }
             }
-            else { name = "./data/" + subject_name + ".txt"; }
+            else { name = dir + subject_name + ".txt"; }
 
             TextWriter tw = new StreamWriter(name);
             tw.WriteLine(high_data_record + "\r\n\r\n" + low_data_record);
