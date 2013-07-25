@@ -15,3 +15,14 @@ C:\Users\Jay\Desktop\UniqueHues\UniqueHues\obj\Release\UniqueHues.pdb
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Release\UniqueHues.exe.config
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.exe
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.pdb
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Release\UniqueHues.exe
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Release\UniqueHues.pdb
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Release\CyLibCpp.dll
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Release\OL490Lib.dll
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Release\OL490_SDK_Dll.dll
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Release\OLIPluginLibrary.dll
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.csprojResolveAssemblyReference.cache
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.ForcedChoiceForm.resources
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.HomeForm.resources
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.Properties.Resources.resources
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.csproj.GenerateResource.Cache

@@ -30,6 +30,7 @@ namespace StaircaseProgram
         private static string low_data_record;
 
         public static string subject_name;
+        public static string hue;
         public static string active_wavelength;
         public static int high_reversals;
         public static int low_reversals;
@@ -40,6 +41,7 @@ namespace StaircaseProgram
         public Staircase()
         {
             subject_name = "name";
+            hue = "none";
             active_wavelength = "none";
             high_reversals = 0;
             low_reversals = 0;
@@ -146,6 +148,7 @@ namespace StaircaseProgram
             if (uniqueHue == "green") { wavelength_upper = 580; wavelength_lower = 480; }
 
             setCurrentWavelength();
+            hue = uniqueHue;
 
         }
 
@@ -260,23 +263,25 @@ namespace StaircaseProgram
 
             // save results to file
             string name;
-            string dir = "C:/Users/Jay/Desktop/UniqueHues_Data/";
-            if (File.Exists(dir + subject_name + ".txt"))
+            string dir = "C:/Users/Jay/Desktop/hues/data/" + subject_name + "/";
+            
+            // create directory for subject if it doesn't already exist
+            if (!Directory.Exists(dir))
             {
-                if (!File.Exists(dir + subject_name + "_1.txt"))
-                {
-                    name = dir + subject_name + "_1.txt";
-                }
-                else if (!File.Exists(dir + subject_name + "_2.txt"))
-                {
-                    name = dir + subject_name + "_2.txt";
-                }
-                else
-                {
-                    name = dir + subject_name + "_3.txt";
-                }
+                Directory.CreateDirectory(dir);
             }
-            else { name = dir + subject_name + ".txt"; }
+
+            // get date
+            DateTime date = DateTime.Today;
+
+            string basename = (dir + subject_name + "_" + hue.Substring(0,1).ToUpper() + 
+                "_" + date.ToString("mdy"));
+            int trial = 1;
+            while (File.Exists(basename + "_" + trial.ToString() + ".txt"))
+            {
+                trial += 1;
+            }
+            name = basename + "_" + trial + ".txt";
 
             TextWriter tw = new StreamWriter(name);
             tw.WriteLine(high_data_record + "\r\n\r\n" + low_data_record);
