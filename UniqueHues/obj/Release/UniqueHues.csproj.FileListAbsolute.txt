@@ -26,3 +26,4 @@ C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.ForcedChoice
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.HomeForm.resources
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.Properties.Resources.resources
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.csproj.GenerateResource.Cache
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.Calibrate.resources

@@ -64,5 +64,16 @@ namespace UniqueHues
             form.Show();
 
         }
+
+        private void HomeForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void runCalibrationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Calibrate form1 = new Calibrate();
+            form1.Show();
+        }
     }
 }
