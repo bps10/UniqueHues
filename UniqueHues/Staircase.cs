@@ -275,7 +275,7 @@ namespace StaircaseProgram
             DateTime date = DateTime.Today;
 
             string basename = (dir + subject_name + "_" + hue.Substring(0,1).ToUpper() + 
-                "_" + date.ToString("mdy"));
+                "_" + date.ToString("Mddy")); // month day year
             int trial = 1;
             while (File.Exists(basename + "_" + trial.ToString() + ".txt"))
             {
