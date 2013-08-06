@@ -45,18 +45,18 @@ namespace UniqueHues
 
             if (uniqueHue == "yellow")
             {
-                label1_text = "'g' = too green"; key1 = 1;
-                label2_text = "'r' = too red"; key2 = 2;
+                label1_text = "left = too green"; key1 = 1;
+                label2_text = "right = too red"; key2 = 2;
             }
             if (uniqueHue == "blue")
             {
-                label1_text = "'p' = too purple"; key1 = 4;
-                label2_text = "'g' = too green"; key2 = 1;
+                label1_text = "left = too purple"; key1 = 4;
+                label2_text = "right = too green"; key2 = 1;
             }
             if (uniqueHue == "green")
             {
-                label1_text = "'b' = too blue"; key1 = 0;
-                label2_text = "'y' = too yellow"; key2 = 3;
+                label1_text = "left = too blue"; key1 = 0;
+                label2_text = "right = too yellow"; key2 = 3;
             }
             form.changeLabel3text(label1_text, key1);
             form.changeLabel5text(label2_text, key2);

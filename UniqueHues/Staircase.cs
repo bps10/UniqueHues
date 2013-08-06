@@ -35,6 +35,7 @@ namespace StaircaseProgram
         public static int high_reversals;
         public static int low_reversals;
         public static int max_reversals = 10;
+        public static int pause_time = 1000;
 
         public bool end_staircase;
 
@@ -96,7 +97,7 @@ namespace StaircaseProgram
             {
                 // close the shutter and pause 1.5sec
                 closeShutter();
-                Thread.Sleep(1500);
+                Thread.Sleep(pause_time);
                 // update gooch and then open shutter
                 updateGooch();
                 openShutter();
