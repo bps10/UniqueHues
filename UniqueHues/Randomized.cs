@@ -37,7 +37,7 @@ namespace StaircaseProgram
             subject_name = "name";
             hue = "none";
             data_record = "";
-            trial = 0;
+            trial = 1;
 
             if (s_OL490.GetOL490ShutterState() == 1)
             {
@@ -49,13 +49,11 @@ namespace StaircaseProgram
             }
         }
 
-        public static IEnumerable<int> Range(int start, int count);
-
         public void gen_wavelengths()
         {
-            foreach (int wvlen in Range(wavelength_lower, wavelength_upper))
+            for (int wvlen=wavelength_lower; wvlen < wavelength_upper + 1; wvlen++)
             {
-                foreach (int i in Range(1, 5))
+                for (int i = 1; i < 6; i++ )
                 {
                     wavelengths.Add(wvlen);
                 }
@@ -72,13 +70,14 @@ namespace StaircaseProgram
             initializeGooch();
             clearGooch();
 
+            // get wavelength bounds based on hue
+            selectStartingWavelength(uniqueHue);
+
             // generate list of randomized wavelengths
             gen_wavelengths();
 
             // make sure end_staircase is false;
             end_wavelength = wavelengths.Count;
-
-            selectStartingWavelength(uniqueHue);
 
             updateGooch();
 
@@ -89,14 +88,21 @@ namespace StaircaseProgram
         public void continueRandomized(int button_choice)
         {
             record_data(button_choice);
+            trial++;
             if (trial != end_wavelength)
             {
+                // update current wavelength
+                current_wavelength = wavelengths[trial];
                 // close the shutter and pause 1.5sec
                 closeShutter();
                 Thread.Sleep(pause_time);
                 // update gooch and then open shutter
                 updateGooch();
                 openShutter();
+            }
+            else
+            {
+                endRandomized();
             }
 
         }
@@ -150,7 +156,7 @@ namespace StaircaseProgram
         }
 
 
-        public static void Shuffle<T>(this IList<T> list)
+        public static void Shuffle<T>(IList<T> list)
         {
             Random rng = new Random();
             int n = list.Count;
@@ -168,8 +174,6 @@ namespace StaircaseProgram
         {
             string data = current_wavelength.ToString() + "\t" + button_choice.ToString() + "\r\n";
             data_record += data;
-
-            setCurrentWavelength();
         }
 
         public void setCurrentWavelength()
@@ -183,14 +187,14 @@ namespace StaircaseProgram
 
         }
 
-        public void endStaircase()
+        public void endRandomized()
         {
             clearGooch();
             closeShutter();
 
             // save results to file
             string name;
-            string dir = "C:/Users/Jay/Desktop/hues/data/" + subject_name + "/";
+            string dir = "C:/Users/Jay/Desktop/hues/data/rand/" + subject_name + "/";
 
             // create directory for subject if it doesn't already exist
             if (!Directory.Exists(dir))
