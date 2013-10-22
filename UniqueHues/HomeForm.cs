@@ -11,10 +11,12 @@ namespace UniqueHues
     public partial class HomeForm : Form
     {
         private string uniqueHue = "green";
+        private bool randomized_opt = false;
 
         public HomeForm()
         {
             InitializeComponent();
+            randomizeToolStripMenuItem.Checked = false;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -37,6 +39,8 @@ namespace UniqueHues
             string subject_name = this.textBox1.Text;
             // make sure form set to null to clear previous instance
             ForcedChoiceForm form = new ForcedChoiceForm(uniqueHue, subject_name);
+            // rand form as well
+            RandForcedChoiceForm Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name);
 
             string label1_text = "";
             string label2_text = "";
@@ -45,24 +49,33 @@ namespace UniqueHues
 
             if (uniqueHue == "yellow")
             {
-                label1_text = "'g' = too green"; key1 = 1;
-                label2_text = "'r' = too red"; key2 = 2;
+                label1_text = "left = too green"; key1 = 1;
+                label2_text = "right = too red"; key2 = 2;
             }
             if (uniqueHue == "blue")
             {
-                label1_text = "'p' = too purple"; key1 = 4;
-                label2_text = "'g' = too green"; key2 = 1;
+                label1_text = "left = too purple"; key1 = 4;
+                label2_text = "right = too green"; key2 = 1;
             }
             if (uniqueHue == "green")
             {
-                label1_text = "'b' = too blue"; key1 = 0;
-                label2_text = "'y' = too yellow"; key2 = 3;
+                label1_text = "left = too blue"; key1 = 0;
+                label2_text = "right = too yellow"; key2 = 3;
             }
-            form.changeLabel3text(label1_text, key1);
-            form.changeLabel5text(label2_text, key2);
 
-            form.Show();
+            if (!randomized_opt)
+            {
+                form.changeLabel3text(label1_text, key1);
+                form.changeLabel5text(label2_text, key2);
 
+                form.Show();
+            }
+            else
+            {
+                Rand_form.changeLabel3text(label1_text, key1);
+                Rand_form.changeLabel5text(label2_text, key2);
+                Rand_form.Show();
+            }
         }
 
         private void HomeForm_Load(object sender, EventArgs e)
@@ -74,6 +87,21 @@ namespace UniqueHues
         {
             Calibrate form1 = new Calibrate();
             form1.Show();
+        }
+
+        private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (randomizeToolStripMenuItem.Checked == true)
+            {
+                randomized_opt = false;
+                randomizeToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                randomized_opt = true;
+                randomizeToolStripMenuItem.Checked = true;
+            }
+
         }
     }
 }
