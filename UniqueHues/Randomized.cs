@@ -51,9 +51,9 @@ namespace StaircaseProgram
 
         public void gen_wavelengths()
         {
-            for (int wvlen=wavelength_lower; wvlen < wavelength_upper + 1; wvlen++)
+            for (int wvlen=wavelength_lower; wvlen < wavelength_upper + 1; wvlen += 2)
             {
-                for (int i = 1; i < 6; i++ )
+                for (int i = 1; i < 11; i++ )
                 {
                     wavelengths.Add(wvlen);
                 }
@@ -75,6 +75,9 @@ namespace StaircaseProgram
 
             // generate list of randomized wavelengths
             gen_wavelengths();
+
+            // set first wavelength
+            current_wavelength = wavelengths[trial];
 
             // make sure end_staircase is false;
             end_wavelength = wavelengths.Count;
