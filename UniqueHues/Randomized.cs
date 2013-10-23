@@ -149,9 +149,9 @@ namespace StaircaseProgram
 
         private void selectStartingWavelength(string uniqueHue)
         {
-            if (uniqueHue == "yellow") { wavelength_upper = 630; wavelength_lower = 550; }
-            if (uniqueHue == "blue") { wavelength_upper = 500; wavelength_lower = 430; }
-            if (uniqueHue == "green") { wavelength_upper = 512; wavelength_lower = 482; }
+            if (uniqueHue == "yellow") { wavelength_upper = 590; wavelength_lower = 560; }
+            if (uniqueHue == "blue") { wavelength_upper = 500; wavelength_lower = 450; }
+            if (uniqueHue == "green") { wavelength_upper = 540; wavelength_lower = 500; }
 
             setCurrentWavelength();
             hue = uniqueHue;
