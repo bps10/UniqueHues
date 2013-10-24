@@ -94,8 +94,6 @@ namespace StaircaseProgram
             
             if (trial != end_wavelength)
             {
-                // increment trial count
-                trial++;
                 // update current wavelength
                 current_wavelength = wavelengths[trial];
                 // close the shutter and pause
@@ -104,6 +102,9 @@ namespace StaircaseProgram
                 // update gooch and then open shutter
                 updateGooch();
                 openShutter();
+
+                // increment trial count
+                trial++;
             }
             else
             {

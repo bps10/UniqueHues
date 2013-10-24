@@ -42,7 +42,7 @@ namespace UniqueHues
 
         private static void clearGooch()
         {
-            if (s_OL490.GetNumberOfLiveSpectrumPeaks() > 0) { s_OL490.ResetLiveSpectrum(); }
+            s_OL490.ResetLiveSpectrum();
 
         }
 
@@ -100,6 +100,31 @@ namespace UniqueHues
                     closeShutter();
                     changeLabel2text("end of spectrum");
                 }
+            }
+            if (e.KeyChar == 'j')
+            {
+                if (current_wavelength > 380)
+                {
+
+                    current_wavelength -= 10;
+                    updateGooch();
+                    //double wvlen = s_OL490.GetLiveSpectrumPeakWavelength(-1);
+                    string wvlen = current_wavelength.ToString();
+                    changeLabel2text(wvlen.ToString() + " nm");
+
+                }
+                else
+                {
+                    clearGooch();
+                    closeShutter();
+                    changeLabel2text("end of spectrum");
+                }
+            if (e.KeyChar == 'q')
+            {
+                clearGooch();
+                closeShutter();
+                changeLabel2text("end of program");
+            }
             }
 
         }
