@@ -46,9 +46,9 @@ namespace UniqueHues
             {
                 string subject_name = this.textBox1.Text;
                 // make sure form set to null to clear previous instance
-                ForcedChoiceForm form = new ForcedChoiceForm(uniqueHue, subject_name);
+                ForcedChoiceForm form = null;
                 // rand form as well
-                RandForcedChoiceForm Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name);
+                RandForcedChoiceForm Rand_form = null;
 
                 string label1_text = "";
                 string label2_text = "";
@@ -73,6 +73,7 @@ namespace UniqueHues
 
                 if (!randomized_opt & !calibrationToolStripMenuItem.Checked)
                 {
+                    form = new ForcedChoiceForm(uniqueHue, subject_name);
                     form.changeLabel3text(label1_text, key1);
                     form.changeLabel5text(label2_text, key2);
 
@@ -80,6 +81,7 @@ namespace UniqueHues
                 }
                 else if (randomized_opt & !calibrationToolStripMenuItem.Checked)
                 {
+                    //Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name);
                     Rand_form.changeLabel3text(label1_text, key1);
                     Rand_form.changeLabel5text(label2_text, key2);
                     Rand_form.Show();
