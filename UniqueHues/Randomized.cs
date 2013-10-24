@@ -51,7 +51,7 @@ namespace StaircaseProgram
 
         public void gen_wavelengths()
         {
-            for (int wvlen=wavelength_lower; wvlen < wavelength_upper + 1; wvlen += 2)
+            for (int wvlen = wavelength_lower; wvlen < wavelength_upper + 1; wvlen += 2)
             {
                 for (int i = 1; i < 11; i++ )
                 {
@@ -91,12 +91,14 @@ namespace StaircaseProgram
         public void continueRandomized(int button_choice)
         {
             record_data(button_choice);
-            trial++;
+            
             if (trial != end_wavelength)
             {
+                // increment trial count
+                trial++;
                 // update current wavelength
                 current_wavelength = wavelengths[trial];
-                // close the shutter and pause 1.5sec
+                // close the shutter and pause
                 closeShutter();
                 Thread.Sleep(pause_time);
                 // update gooch and then open shutter
@@ -107,7 +109,6 @@ namespace StaircaseProgram
             {
                 endRandomized();
             }
-
         }
 
         private static void initializeGooch()
@@ -153,9 +154,7 @@ namespace StaircaseProgram
             if (uniqueHue == "blue") { wavelength_upper = 500; wavelength_lower = 450; }
             if (uniqueHue == "green") { wavelength_upper = 540; wavelength_lower = 500; }
 
-            setCurrentWavelength();
             hue = uniqueHue;
-
         }
 
 
@@ -177,11 +176,6 @@ namespace StaircaseProgram
         {
             string data = current_wavelength.ToString() + "\t" + button_choice.ToString() + "\r\n";
             data_record += data;
-        }
-
-        public void setCurrentWavelength()
-        {
-
         }
 
         private static void clearGooch()
