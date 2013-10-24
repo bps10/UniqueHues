@@ -51,7 +51,7 @@ namespace StaircaseProgram
 
         public void gen_wavelengths()
         {
-            for (int wvlen=wavelength_lower; wvlen < wavelength_upper + 1; wvlen += 2)
+            for (int wvlen = wavelength_lower; wvlen < wavelength_upper + 1; wvlen += 2)
             {
                 for (int i = 1; i < 11; i++ )
                 {
@@ -91,23 +91,25 @@ namespace StaircaseProgram
         public void continueRandomized(int button_choice)
         {
             record_data(button_choice);
-            trial++;
+            
             if (trial != end_wavelength)
             {
                 // update current wavelength
                 current_wavelength = wavelengths[trial];
-                // close the shutter and pause 1.5sec
+                // close the shutter and pause
                 closeShutter();
                 Thread.Sleep(pause_time);
                 // update gooch and then open shutter
                 updateGooch();
                 openShutter();
+
+                // increment trial count
+                trial++;
             }
             else
             {
                 endRandomized();
             }
-
         }
 
         private static void initializeGooch()
@@ -149,13 +151,11 @@ namespace StaircaseProgram
 
         private void selectStartingWavelength(string uniqueHue)
         {
-            if (uniqueHue == "yellow") { wavelength_upper = 630; wavelength_lower = 550; }
-            if (uniqueHue == "blue") { wavelength_upper = 500; wavelength_lower = 430; }
-            if (uniqueHue == "green") { wavelength_upper = 512; wavelength_lower = 482; }
+            if (uniqueHue == "yellow") { wavelength_upper = 590; wavelength_lower = 560; }
+            if (uniqueHue == "blue") { wavelength_upper = 500; wavelength_lower = 450; }
+            if (uniqueHue == "green") { wavelength_upper = 540; wavelength_lower = 500; }
 
-            setCurrentWavelength();
             hue = uniqueHue;
-
         }
 
 
@@ -177,11 +177,6 @@ namespace StaircaseProgram
         {
             string data = current_wavelength.ToString() + "\t" + button_choice.ToString() + "\r\n";
             data_record += data;
-        }
-
-        public void setCurrentWavelength()
-        {
-
         }
 
         private static void clearGooch()

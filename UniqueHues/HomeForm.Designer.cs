@@ -35,10 +35,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.calToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runCalibrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.randomizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calibrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,7 +122,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.calToolStripMenuItem,
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -131,25 +129,11 @@
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // calToolStripMenuItem
-            // 
-            this.calToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.runCalibrationToolStripMenuItem});
-            this.calToolStripMenuItem.Name = "calToolStripMenuItem";
-            this.calToolStripMenuItem.Size = new System.Drawing.Size(42, 24);
-            this.calToolStripMenuItem.Text = "Cal";
-            // 
-            // runCalibrationToolStripMenuItem
-            // 
-            this.runCalibrationToolStripMenuItem.Name = "runCalibrationToolStripMenuItem";
-            this.runCalibrationToolStripMenuItem.Size = new System.Drawing.Size(174, 24);
-            this.runCalibrationToolStripMenuItem.Text = "run calibration";
-            this.runCalibrationToolStripMenuItem.Click += new System.EventHandler(this.runCalibrationToolStripMenuItem_Click);
-            // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.randomizeToolStripMenuItem});
+            this.randomizeToolStripMenuItem,
+            this.calibrationToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -160,6 +144,13 @@
             this.randomizeToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
             this.randomizeToolStripMenuItem.Text = "Randomize";
             this.randomizeToolStripMenuItem.Click += new System.EventHandler(this.randomizeToolStripMenuItem_Click);
+            // 
+            // calibrationToolStripMenuItem
+            // 
+            this.calibrationToolStripMenuItem.Name = "calibrationToolStripMenuItem";
+            this.calibrationToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
+            this.calibrationToolStripMenuItem.Text = "Calibration";
+            this.calibrationToolStripMenuItem.Click += new System.EventHandler(this.calibrationToolStripMenuItem_Click);
             // 
             // HomeForm
             // 
@@ -195,10 +186,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem calToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem runCalibrationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem randomizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem calibrationToolStripMenuItem;
     }
 }
 
