@@ -37,7 +37,7 @@ namespace StaircaseProgram
             subject_name = "name";
             hue = "none";
             data_record = "";
-            trial = 1;
+            trial = 0;
 
             if (s_OL490.GetOL490ShutterState() == 1)
             {
@@ -91,7 +91,9 @@ namespace StaircaseProgram
         public void continueRandomized(int button_choice)
         {
             record_data(button_choice);
-            
+            // increment trial count
+            trial++;
+
             if (trial != end_wavelength)
             {
                 // update current wavelength
@@ -102,9 +104,6 @@ namespace StaircaseProgram
                 // update gooch and then open shutter
                 updateGooch();
                 openShutter();
-
-                // increment trial count
-                trial++;
             }
             else
             {
