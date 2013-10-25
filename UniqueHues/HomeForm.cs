@@ -81,7 +81,7 @@ namespace UniqueHues
                 }
                 else if (randomized_opt & !calibrationToolStripMenuItem.Checked)
                 {
-                    //Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name);
+                    Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name);
                     Rand_form.changeLabel3text(label1_text, key1);
                     Rand_form.changeLabel5text(label2_text, key2);
                     Rand_form.Show();
