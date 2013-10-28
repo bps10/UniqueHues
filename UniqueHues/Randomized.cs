@@ -133,13 +133,13 @@ namespace StaircaseProgram
             s_ShutterOpen = true;
         }
 
-        private static void closeShutter()
+        public void closeShutter()
         {
             s_OL490.CloseShutter();
             s_ShutterOpen = false;
         }
 
-        private static void updateGooch()
+        private void updateGooch()
         {
             clearGooch();
             eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, bandwidth, intensity);
@@ -178,10 +178,9 @@ namespace StaircaseProgram
             data_record += data;
         }
 
-        private static void clearGooch()
+        public void clearGooch()
         {
-            if (s_OL490.GetNumberOfLiveSpectrumPeaks() == 1) { s_OL490.ResetLiveSpectrum(); }
-
+            if (s_OL490.GetNumberOfLiveSpectrumPeaks() > 0) { s_OL490.ResetLiveSpectrum(); }
         }
 
         public void endRandomized()
