@@ -37,7 +37,7 @@ namespace StaircaseProgram
             subject_name = "name";
             hue = "none";
             data_record = "";
-            trial = 1;
+            trial = 0;
 
             if (s_OL490.GetOL490ShutterState() == 1)
             {
@@ -91,7 +91,9 @@ namespace StaircaseProgram
         public void continueRandomized(int button_choice)
         {
             record_data(button_choice);
-            
+            // increment trial count
+            trial++;
+
             if (trial != end_wavelength)
             {
                 // update current wavelength
@@ -102,9 +104,6 @@ namespace StaircaseProgram
                 // update gooch and then open shutter
                 updateGooch();
                 openShutter();
-
-                // increment trial count
-                trial++;
             }
             else
             {
@@ -134,13 +133,13 @@ namespace StaircaseProgram
             s_ShutterOpen = true;
         }
 
-        private static void closeShutter()
+        public void closeShutter()
         {
             s_OL490.CloseShutter();
             s_ShutterOpen = false;
         }
 
-        private static void updateGooch()
+        private void updateGooch()
         {
             clearGooch();
             eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, bandwidth, intensity);
@@ -179,10 +178,9 @@ namespace StaircaseProgram
             data_record += data;
         }
 
-        private static void clearGooch()
+        public void clearGooch()
         {
-            if (s_OL490.GetNumberOfLiveSpectrumPeaks() == 1) { s_OL490.ResetLiveSpectrum(); }
-
+            if (s_OL490.GetNumberOfLiveSpectrumPeaks() > 0) { s_OL490.ResetLiveSpectrum(); }
         }
 
         public void endRandomized()

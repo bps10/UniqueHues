@@ -24,6 +24,7 @@ namespace UniqueHues
         public Calibrate()
         {
             InitializeComponent();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
 
@@ -137,5 +138,14 @@ namespace UniqueHues
         {
 
         }
+
+        private void Form1_Closing(object sender, FormClosingEventArgs e)
+        {
+            // Close Shutter and Clear Gooch on close event
+            clearGooch();
+            closeShutter();
+        }
+
     }
+
 }

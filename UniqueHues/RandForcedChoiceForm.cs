@@ -21,6 +21,7 @@ namespace UniqueHues
         public RandForcedChoiceForm(string uniqueHue, string subject_name)
         {
             InitializeComponent();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this._FormClosing);
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Form1_KeyPress);
 
@@ -69,5 +70,11 @@ namespace UniqueHues
             this.label5.Text = labelText;
         }
 
+        private void _FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Close Shutter and Clear Gooch on close event
+            thisTrial.clearGooch();
+            thisTrial.closeShutter();
+        }
     }
 }
