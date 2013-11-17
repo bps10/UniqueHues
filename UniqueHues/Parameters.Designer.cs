@@ -47,7 +47,7 @@
             this.label1.Location = new System.Drawing.Point(20, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 24);
+            this.label1.Size = new System.Drawing.Size(144, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "intensity (%)";
             // 
@@ -56,7 +56,7 @@
             this.button1.Location = new System.Drawing.Point(89, 284);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 32);
+            this.button1.Size = new System.Drawing.Size(116, 39);
             this.button1.TabIndex = 1;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
@@ -64,11 +64,11 @@
             // 
             // intensityBox
             // 
-            this.intensityBox.Location = new System.Drawing.Point(175, 24);
+            this.intensityBox.Location = new System.Drawing.Point(203, 24);
             this.intensityBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.intensityBox.MaxLength = 3;
             this.intensityBox.Name = "intensityBox";
-            this.intensityBox.Size = new System.Drawing.Size(81, 29);
+            this.intensityBox.Size = new System.Drawing.Size(81, 34);
             this.intensityBox.TabIndex = 2;
             // 
             // label2
@@ -78,16 +78,16 @@
             this.label2.Location = new System.Drawing.Point(20, 180);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 24);
+            this.label2.Size = new System.Drawing.Size(163, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "step size (nm)";
             // 
             // stepSizeBox
             // 
-            this.stepSizeBox.Location = new System.Drawing.Point(175, 180);
+            this.stepSizeBox.Location = new System.Drawing.Point(203, 180);
             this.stepSizeBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.stepSizeBox.Name = "stepSizeBox";
-            this.stepSizeBox.Size = new System.Drawing.Size(81, 29);
+            this.stepSizeBox.Size = new System.Drawing.Size(81, 34);
             this.stepSizeBox.TabIndex = 4;
             // 
             // label3
@@ -97,16 +97,16 @@
             this.label3.Location = new System.Drawing.Point(20, 77);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 24);
+            this.label3.Size = new System.Drawing.Size(179, 29);
             this.label3.TabIndex = 5;
             this.label3.Text = "bandwidth (nm)";
             // 
             // bandwidthBox
             // 
-            this.bandwidthBox.Location = new System.Drawing.Point(175, 74);
+            this.bandwidthBox.Location = new System.Drawing.Point(203, 74);
             this.bandwidthBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.bandwidthBox.Name = "bandwidthBox";
-            this.bandwidthBox.Size = new System.Drawing.Size(81, 29);
+            this.bandwidthBox.Size = new System.Drawing.Size(81, 34);
             this.bandwidthBox.TabIndex = 6;
             // 
             // label4
@@ -116,7 +116,7 @@
             this.label4.Location = new System.Drawing.Point(20, 139);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(162, 24);
+            this.label4.Size = new System.Drawing.Size(205, 29);
             this.label4.TabIndex = 7;
             this.label4.Text = "Randomized only:";
             // 
@@ -127,24 +127,24 @@
             this.repeats.Location = new System.Drawing.Point(20, 229);
             this.repeats.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.repeats.Name = "repeats";
-            this.repeats.Size = new System.Drawing.Size(72, 24);
+            this.repeats.Size = new System.Drawing.Size(94, 29);
             this.repeats.TabIndex = 8;
             this.repeats.Text = "repeats";
             // 
             // repeatsBox
             // 
-            this.repeatsBox.Location = new System.Drawing.Point(175, 229);
+            this.repeatsBox.Location = new System.Drawing.Point(203, 229);
             this.repeatsBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.repeatsBox.Name = "repeatsBox";
-            this.repeatsBox.Size = new System.Drawing.Size(81, 29);
+            this.repeatsBox.Size = new System.Drawing.Size(81, 34);
             this.repeatsBox.TabIndex = 9;
             // 
             // Parameters
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(284, 338);
+            this.ClientSize = new System.Drawing.Size(301, 338);
             this.Controls.Add(this.repeatsBox);
             this.Controls.Add(this.repeats);
             this.Controls.Add(this.label4);

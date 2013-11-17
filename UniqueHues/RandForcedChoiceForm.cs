@@ -29,7 +29,7 @@ namespace UniqueHues
             float intensity = parameters["intensity"];
             float bandwidth = parameters["bandwidth"];
             float repeats = parameters["repeats"];
-            float step = parameters["step"];
+            int step = (int)Convert.ToDouble(parameters["step"]);
 
             thisTrial = new StaircaseProgram.Randomized(bandwidth, intensity, repeats, step);
             thisTrial.RunForcedChoice(uniqueHue, subject_name);

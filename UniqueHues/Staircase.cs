@@ -139,7 +139,7 @@ namespace StaircaseProgram
         private void updateGooch()
         {
             clearGooch();
-            eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, bandwidth, intensity);
+            eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, BANDWIDTH, INTENSITY);
             //print("Clearing Spectrum");
             processErrorCode("ClrSpectrum()", errCode);
 

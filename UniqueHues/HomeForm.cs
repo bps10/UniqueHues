@@ -13,7 +13,7 @@ namespace UniqueHues
         private string uniqueHue = "green";
         private bool randomized_opt = false;
 
-        Dictionary<string, float> PARAMETERS;
+        Dictionary<string, float> PARAMETERS = null;
 
         public HomeForm()
         {
@@ -21,6 +21,7 @@ namespace UniqueHues
             randomizeToolStripMenuItem.Checked = false;
             calibrationToolStripMenuItem.Checked = false;
 
+            PARAMETERS = new Dictionary<string,float>();
             PARAMETERS.Add("intensity", 100);
             PARAMETERS.Add("bandwidth", 10);
             PARAMETERS.Add("step", 5);
@@ -46,7 +47,7 @@ namespace UniqueHues
         {
             if (calibrationToolStripMenuItem.Checked)
             {
-                Calibrate form1 = new Calibrate();
+                Calibrate form1 = new Calibrate(PARAMETERS["bandwidth"], PARAMETERS["intensity"]);
                 form1.Show();
             }
             else
@@ -130,7 +131,7 @@ namespace UniqueHues
             }
         }
 
-        private void intensityToolStripMenuItem_Click(object sender, EventArgs e)
+        private void setParamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Parameters param_form = new Parameters();
             param_form.ShowDialog();

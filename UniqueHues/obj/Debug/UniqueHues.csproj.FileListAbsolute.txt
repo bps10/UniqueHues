@@ -39,3 +39,4 @@ C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Debug\CyLibCpp.dll
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Debug\OL490Lib.dll
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Debug\OL490_SDK_Dll.dll
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\bin\Debug\OLIPluginLibrary.dll
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Debug\UniqueHues.Parameters.resources

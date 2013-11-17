@@ -17,10 +17,10 @@ namespace StaircaseProgram
         public static double current_wavelength;
         List<int> wavelengths = new List<int>();
 
-        private float BANDWIDTH;
-        private float INTENSITY;
-        private float REPEATS;
-        private float STEP;
+        public float BANDWIDTH;
+        public float INTENSITY;
+        public float REPEATS;
+        public int STEP;
 
         private static OL490SdkLibrary s_OL490 = new OL490SdkLibrary();
         private static bool s_ShutterOpen;
@@ -34,7 +34,7 @@ namespace StaircaseProgram
         public int trial;
         public int end_wavelength;
 
-        public Randomized(float bandwidth = 10, float intensity = 100, float repeats = 10, float step = 5)
+        public Randomized(float bandwidth = 10, float intensity = 100, float repeats = 10, int step = 5)
         {   
             // set parameters
             BANDWIDTH = bandwidth;
@@ -150,7 +150,7 @@ namespace StaircaseProgram
         private void updateGooch()
         {
             clearGooch();
-            eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, bandwidth, intensity);
+            eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, BANDWIDTH, INTENSITY);
             //print("Clearing Spectrum");
             processErrorCode("ClrSpectrum()", errCode);
 

@@ -15,8 +15,8 @@ namespace UniqueHues
     {
         public static double current_wavelength;
 
-        private double BANDWIDTH;
-        private double INTENSITY;
+        public double BANDWIDTH;
+        public double INTENSITY;
 
         private static OL490SdkLibrary s_OL490 = new OL490SdkLibrary();
         //private static bool s_ShutterOpen;
@@ -78,10 +78,10 @@ namespace UniqueHues
             s_OL490.CloseShutter();
         }
 
-        private static void updateGooch()
+        private void updateGooch()
         {
             clearGooch();
-            eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, bandwidth, intensity);
+            eErrorCodes errCode = s_OL490.SendLivePeak(current_wavelength, BANDWIDTH, INTENSITY);
             //print("Clearing Spectrum");
 
         }
