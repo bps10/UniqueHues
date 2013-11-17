@@ -16,7 +16,7 @@ namespace UniqueHues
         private static double trial_count;
         private static StaircaseProgram.Staircase thisTrial = null;
 
-        public ForcedChoiceForm(string uniqueHue, string subject_name)
+        public ForcedChoiceForm(string uniqueHue, string subject_name, Dictionary<string, float> parameters)
         {
             InitializeComponent();
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ForcedChoiceForm_FormClosing);
@@ -25,7 +25,10 @@ namespace UniqueHues
 
             trial_count = 0;
 
-            thisTrial = new StaircaseProgram.Staircase();
+            float intensity = parameters["intensity"];
+            float bandwidth = parameters["bandwidth"];
+
+            thisTrial = new StaircaseProgram.Staircase(bandwidth, intensity);
             thisTrial.RunStaircase(uniqueHue, subject_name);
         }
 

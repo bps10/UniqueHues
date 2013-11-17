@@ -16,8 +16,8 @@ namespace StaircaseProgram
         public static double wavelength_lower;
         public static double current_wavelength;
 
-        private const double bandwidth = 10;
-        private const double intensity = 100;
+        private double BANDWIDTH;
+        private double INTENSITY;
 
         private static OL490SdkLibrary s_OL490 = new OL490SdkLibrary();
         private static bool s_ShutterOpen;
@@ -39,8 +39,11 @@ namespace StaircaseProgram
 
         public bool end_staircase;
 
-        public Staircase()
-        {
+        public Staircase(float bandwidth=10, float intensity=100)
+        {   
+            // set parameters
+            BANDWIDTH = bandwidth;
+            INTENSITY = intensity;
             subject_name = "name";
             hue = "none";
             active_wavelength = "none";

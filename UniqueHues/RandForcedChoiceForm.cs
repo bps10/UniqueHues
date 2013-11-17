@@ -18,7 +18,7 @@ namespace UniqueHues
     {
         private static StaircaseProgram.Randomized thisTrial = null;
 
-        public RandForcedChoiceForm(string uniqueHue, string subject_name)
+        public RandForcedChoiceForm(string uniqueHue, string subject_name, Dictionary<string, float> parameters)
         {
             InitializeComponent();
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this._FormClosing);
@@ -26,8 +26,12 @@ namespace UniqueHues
             this.KeyDown += new KeyEventHandler(Form1_KeyPress);
 
             //trial_count = 0;
+            float intensity = parameters["intensity"];
+            float bandwidth = parameters["bandwidth"];
+            float repeats = parameters["repeats"];
+            float step = parameters["step"];
 
-            thisTrial = new StaircaseProgram.Randomized();
+            thisTrial = new StaircaseProgram.Randomized(bandwidth, intensity, repeats, step);
             thisTrial.RunForcedChoice(uniqueHue, subject_name);
         }
 

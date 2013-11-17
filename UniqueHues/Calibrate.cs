@@ -15,15 +15,20 @@ namespace UniqueHues
     {
         public static double current_wavelength;
 
-        private const double bandwidth = 10;
-        private const double intensity = 100;
+        private double BANDWIDTH;
+        private double INTENSITY;
 
         private static OL490SdkLibrary s_OL490 = new OL490SdkLibrary();
         //private static bool s_ShutterOpen;
 
-        public Calibrate()
+        public Calibrate(double bandwidth = 10, double intensity = 100)
         {
             InitializeComponent();
+
+            // set parameters
+            BANDWIDTH = bandwidth;
+            INTENSITY = intensity;
+            
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);

@@ -12,13 +12,19 @@ namespace UniqueHues
     {
         private string uniqueHue = "green";
         private bool randomized_opt = false;
-        public float INTENSITY_VALUE = 100;
+
+        Dictionary<string, float> PARAMETERS;
 
         public HomeForm()
         {
             InitializeComponent();
             randomizeToolStripMenuItem.Checked = false;
             calibrationToolStripMenuItem.Checked = false;
+
+            PARAMETERS.Add("intensity", 100);
+            PARAMETERS.Add("bandwidth", 10);
+            PARAMETERS.Add("step", 5);
+            PARAMETERS.Add("repeat", 10);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -74,7 +80,7 @@ namespace UniqueHues
 
                 if (!randomized_opt & !calibrationToolStripMenuItem.Checked)
                 {
-                    form = new ForcedChoiceForm(uniqueHue, subject_name);
+                    form = new ForcedChoiceForm(uniqueHue, subject_name, PARAMETERS);
                     form.changeLabel3text(label1_text, key1);
                     form.changeLabel5text(label2_text, key2);
 
@@ -82,7 +88,7 @@ namespace UniqueHues
                 }
                 else if (randomized_opt & !calibrationToolStripMenuItem.Checked)
                 {
-                    Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name);
+                    Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name, PARAMETERS);
                     Rand_form.changeLabel3text(label1_text, key1);
                     Rand_form.changeLabel5text(label2_text, key2);
                     Rand_form.Show();
@@ -128,7 +134,7 @@ namespace UniqueHues
         {
             Parameters param_form = new Parameters();
             param_form.ShowDialog();
-            INTENSITY_VALUE = param_form.EnteredValue;
+            PARAMETERS = param_form.EnteredValue;
         }
     }
 }

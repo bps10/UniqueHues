@@ -17,8 +17,10 @@ namespace StaircaseProgram
         public static double current_wavelength;
         List<int> wavelengths = new List<int>();
 
-        private const double bandwidth = 10;
-        private const double intensity = 100;
+        private float BANDWIDTH;
+        private float INTENSITY;
+        private float REPEATS;
+        private float STEP;
 
         private static OL490SdkLibrary s_OL490 = new OL490SdkLibrary();
         private static bool s_ShutterOpen;
@@ -31,9 +33,15 @@ namespace StaircaseProgram
 
         public int trial;
         public int end_wavelength;
-        
-        public Randomized()
-        {
+
+        public Randomized(float bandwidth = 10, float intensity = 100, float repeats = 10, float step = 5)
+        {   
+            // set parameters
+            BANDWIDTH = bandwidth;
+            INTENSITY = intensity;
+            REPEATS = repeats;
+            STEP = step;
+
             subject_name = "name";
             hue = "none";
             data_record = "";
@@ -51,9 +59,9 @@ namespace StaircaseProgram
 
         public void gen_wavelengths()
         {
-            for (int wvlen = wavelength_lower; wvlen < wavelength_upper + 1; wvlen += 2)
+            for (int wvlen = wavelength_lower; wvlen < wavelength_upper + 1; wvlen += STEP)
             {
-                for (int i = 1; i < 11; i++ )
+                for (int i = 1; i <= REPEATS; i++ )
                 {
                     wavelengths.Add(wvlen);
                 }
@@ -151,8 +159,8 @@ namespace StaircaseProgram
         private void selectStartingWavelength(string uniqueHue)
         {
             if (uniqueHue == "yellow") { wavelength_upper = 590; wavelength_lower = 560; }
-            if (uniqueHue == "blue") { wavelength_upper = 500; wavelength_lower = 450; }
-            if (uniqueHue == "green") { wavelength_upper = 540; wavelength_lower = 500; }
+            if (uniqueHue == "blue") { wavelength_upper = 510; wavelength_lower = 450; }
+            if (uniqueHue == "green") { wavelength_upper = 550; wavelength_lower = 480; }
 
             hue = uniqueHue;
         }
