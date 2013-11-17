@@ -69,6 +69,12 @@
     <Compile Include="ForcedChoiceForm.Designer.cs">
       <DependentUpon>ForcedChoiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Parameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameters.Designer.cs">
+      <DependentUpon>Parameters.cs</DependentUpon>
+    </Compile>
     <Compile Include="RandForcedChoiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ForcedChoiceForm.resx">
       <DependentUpon>ForcedChoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameters.resx">
+      <DependentUpon>Parameters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>

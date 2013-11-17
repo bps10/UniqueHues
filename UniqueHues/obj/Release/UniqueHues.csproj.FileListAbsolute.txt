@@ -28,3 +28,6 @@ C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.Properties.R
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.csproj.GenerateResource.Cache
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.Calibrate.resources
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.RandForcedChoiceForm.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\bin\Release\UniqueHues.exe.config
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.exe
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.pdb

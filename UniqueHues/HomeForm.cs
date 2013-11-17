@@ -12,6 +12,7 @@ namespace UniqueHues
     {
         private string uniqueHue = "green";
         private bool randomized_opt = false;
+        public float INTENSITY_VALUE = 100;
 
         public HomeForm()
         {
@@ -121,6 +122,13 @@ namespace UniqueHues
                 randomizeToolStripMenuItem.Checked = false;
                 randomized_opt = false;
             }
+        }
+
+        private void intensityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Parameters param_form = new Parameters();
+            param_form.ShowDialog();
+            INTENSITY_VALUE = param_form.EnteredValue;
         }
     }
 }
