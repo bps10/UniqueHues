@@ -31,3 +31,4 @@ C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.RandForcedCh
 C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\bin\Release\UniqueHues.exe.config
 C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.exe
 C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.pdb
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.Parameters.resources
