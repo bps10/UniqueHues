@@ -25,7 +25,7 @@ namespace UniqueHues
             PARAMETERS.Add("intensity", 100);
             PARAMETERS.Add("bandwidth", 10);
             PARAMETERS.Add("step", 5);
-            PARAMETERS.Add("repeat", 10);
+            PARAMETERS.Add("repeats", 10);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace UniqueHues
 
         private void setParamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Parameters param_form = new Parameters();
+            Parameters param_form = new Parameters(PARAMETERS);
             param_form.ShowDialog();
             PARAMETERS = param_form.EnteredValue;
         }

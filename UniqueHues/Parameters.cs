@@ -10,13 +10,13 @@ namespace UniqueHues
 {
     public partial class Parameters : Form
     {
-        public Parameters()
+        public Parameters(Dictionary<string, float> param)
         {
             InitializeComponent();
-            this.intensityBox.Text = "100";
-            this.bandwidthBox.Text = "10";
-            this.stepSizeBox.Text = "5";
-            this.repeatsBox.Text = "10";
+            this.intensityBox.Text = (string)Convert.ToString(param["intensity"]);
+            this.bandwidthBox.Text = (string)Convert.ToString(param["bandwidth"]);
+            this.stepSizeBox.Text = (string)Convert.ToString(param["step"]);
+            this.repeatsBox.Text = (string)Convert.ToString(param["repeats"]);
         }
 
         public void button1_Click(object sender, EventArgs e)
