@@ -32,7 +32,7 @@ namespace UniqueHues
                 parameters.Add("intensity", (float)Convert.ToDouble(intensityBox.Text));
                 parameters.Add("bandwidth", (float)Convert.ToDouble(bandwidthBox.Text));
                 parameters.Add("step", (float)Convert.ToDouble(stepSizeBox.Text));
-                parameters.Add("repeat", (float)Convert.ToDouble(repeatsBox.Text));
+                parameters.Add("repeats", (float)Convert.ToDouble(repeatsBox.Text));
 
                 return parameters;
             }
