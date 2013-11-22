@@ -69,6 +69,13 @@
     <Compile Include="ForcedChoiceForm.Designer.cs">
       <DependentUpon>ForcedChoiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Macula.cs" />
+    <Compile Include="MaculaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaculaForm.Designer.cs">
+      <DependentUpon>MaculaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parameters.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ForcedChoiceForm.resx">
       <DependentUpon>ForcedChoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaculaForm.resx">
+      <DependentUpon>MaculaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Parameters.resx">
       <DependentUpon>Parameters.cs</DependentUpon>

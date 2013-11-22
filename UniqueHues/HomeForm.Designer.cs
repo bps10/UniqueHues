@@ -39,6 +39,7 @@
             this.randomizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calibrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setParamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maculaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,6 +136,7 @@
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.randomizeToolStripMenuItem,
+            this.maculaToolStripMenuItem,
             this.calibrationToolStripMenuItem,
             this.setParamsToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
@@ -161,6 +163,13 @@
             this.setParamsToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
             this.setParamsToolStripMenuItem.Text = "Set Params";
             this.setParamsToolStripMenuItem.Click += new System.EventHandler(this.setParamsToolStripMenuItem_Click);
+            // 
+            // maculaToolStripMenuItem
+            // 
+            this.maculaToolStripMenuItem.Name = "maculaToolStripMenuItem";
+            this.maculaToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
+            this.maculaToolStripMenuItem.Text = "Macula";
+            this.maculaToolStripMenuItem.Click += new System.EventHandler(this.maculaToolStripMenuItem_Click);
             // 
             // HomeForm
             // 
@@ -200,6 +209,7 @@
         private System.Windows.Forms.ToolStripMenuItem randomizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calibrationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setParamsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem maculaToolStripMenuItem;
     }
 }
 

@@ -20,6 +20,7 @@ namespace UniqueHues
             InitializeComponent();
             randomizeToolStripMenuItem.Checked = false;
             calibrationToolStripMenuItem.Checked = false;
+            maculaToolStripMenuItem.Checked = false;
 
             PARAMETERS = new Dictionary<string,float>();
             PARAMETERS.Add("intensity", 100);
@@ -45,18 +46,28 @@ namespace UniqueHues
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string subject_name = this.textBox1.Text;
             if (calibrationToolStripMenuItem.Checked)
             {
                 Calibrate form1 = new Calibrate(PARAMETERS["bandwidth"], PARAMETERS["intensity"]);
                 form1.Show();
             }
+            else if (maculaToolStripMenuItem.Checked)
+            {
+                MaculaForm Macula_form = new MaculaForm(subject_name);
+                //Rand_form.changeLabel3text(label1_text, key1);
+                //Rand_form.changeLabel5text(label2_text, key2);
+                Macula_form.Show();
+                Macula_form.run();
+            }
             else
             {
-                string subject_name = this.textBox1.Text;
+                
                 // make sure form set to null to clear previous instance
                 ForcedChoiceForm form = null;
                 // rand form as well
                 RandForcedChoiceForm Rand_form = null;
+                
 
                 string label1_text = "";
                 string label2_text = "";
@@ -79,20 +90,22 @@ namespace UniqueHues
                     label2_text = "right = too yellow"; key2 = 3;
                 }
 
-                if (!randomized_opt & !calibrationToolStripMenuItem.Checked)
+
+                if (randomized_opt)
+                {
+                    Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name, PARAMETERS);
+                    Rand_form.changeLabel3text(label1_text, key1);
+                    Rand_form.changeLabel5text(label2_text, key2);
+                    Rand_form.Show();
+                }
+
+                else
                 {
                     form = new ForcedChoiceForm(uniqueHue, subject_name, PARAMETERS);
                     form.changeLabel3text(label1_text, key1);
                     form.changeLabel5text(label2_text, key2);
 
                     form.Show();
-                }
-                else if (randomized_opt & !calibrationToolStripMenuItem.Checked)
-                {
-                    Rand_form = new RandForcedChoiceForm(uniqueHue, subject_name, PARAMETERS);
-                    Rand_form.changeLabel3text(label1_text, key1);
-                    Rand_form.changeLabel5text(label2_text, key2);
-                    Rand_form.Show();
                 }
             }
         }
@@ -104,17 +117,21 @@ namespace UniqueHues
 
         private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (randomizeToolStripMenuItem.Checked == true)
+            
+            if (randomizeToolStripMenuItem.Checked)
             {
                 randomized_opt = false;
                 randomizeToolStripMenuItem.Checked = false;
             }
+
             else
             {
                 randomized_opt = true;
                 randomizeToolStripMenuItem.Checked = true;
+                maculaToolStripMenuItem.Checked = false;
                 calibrationToolStripMenuItem.Checked = false;
             }
+           
         }
 
         private void calibrationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -128,6 +145,22 @@ namespace UniqueHues
                 calibrationToolStripMenuItem.Checked = true;
                 randomizeToolStripMenuItem.Checked = false;
                 randomized_opt = false;
+                maculaToolStripMenuItem.Checked = false;
+            }
+        }
+        private void maculaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (maculaToolStripMenuItem.Checked)
+            {
+                maculaToolStripMenuItem.Checked = false;
+            }
+
+            else
+            {
+                randomized_opt = false;
+                randomizeToolStripMenuItem.Checked = false;
+                maculaToolStripMenuItem.Checked = true;
+                calibrationToolStripMenuItem.Checked = false;
             }
         }
 
@@ -137,5 +170,7 @@ namespace UniqueHues
             param_form.ShowDialog();
             PARAMETERS = param_form.EnteredValue;
         }
+
+
     }
 }

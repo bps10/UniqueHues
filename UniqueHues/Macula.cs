@@ -13,40 +13,40 @@ namespace UniqueHues
 {
     public class Macula
     {
-
         private static double BANDWIDTH;
         private static double INTENSITY;
-        private static double FLICKER_SPEED = 13.0;
+        private static double FLICKER_SPEED;
         private double TIME_STEP;
         private static System.Timers.Timer flickerTimer;
 
-        public static double current_wavelength;
+        public static double current_wavelength = 456;
 
-        private double short_light_intensity;
+        private static double short_light_intensity;
 
         private static OL490SdkLibrary s_OL490 = new OL490SdkLibrary();
-        private static bool s_ShutterOpen;
 
-        private static string data_record;
+        private static string data_record = "light\tintensity\tlight\tintensity\tspeed(HZ)\n";
 
         public static string subject_name;
 
 
-        public Macula(float bandwidth=10, float intensity=100)
+        public Macula(string name, float bandwidth=10, float intensity=100, 
+            double flicker_speed = 15.0)
         {   
             // set parameters
             BANDWIDTH = bandwidth;
-            INTENSITY = intensity;
-            subject_name = "name";
+            INTENSITY = intensity / 3.0;
+            short_light_intensity = intensity / 3.0;
+            FLICKER_SPEED = flicker_speed;
+            subject_name = name;
 
-            if (s_OL490.GetOL490ShutterState() == 1)
-            { 
-                s_ShutterOpen = true;
-            }
-            else if (s_OL490.GetOL490ShutterState() == 0)
-            { 
-                s_ShutterOpen = false;
-            }
+        }
+
+        public void Set_Short_Intensity(double intensity)
+        {
+            short_light_intensity = intensity / 3.0;
+            end_flicker();
+            _updateMacula();
         }
 
         public void Set_Flicker_Speed(float speed)
@@ -55,14 +55,15 @@ namespace UniqueHues
             FLICKER_SPEED = speed;
         }
 
-        public void RunMacula(string uniqueHue, string sub_name)
+        public void RunMacula()
         {
             // log subject name
-            subject_name = sub_name;
+            //subject_name = sub_name;
 
             // initialize the gooch;
             initializeGooch();
             clearGooch();
+            openShutter();
 
             _updateMacula();
 
@@ -71,40 +72,48 @@ namespace UniqueHues
         public void _updateMacula()
         {
 
-            TIME_STEP = 60 / FLICKER_SPEED / 2; // 1 sec / Hz / cycle
+            TIME_STEP = 1000 / FLICKER_SPEED / 2; // 1 sec / Hz / cycle
             // continue running until user inputs new value
 
-            flickerTimer = new System.Timers.Timer(30000);
+            flickerTimer = new System.Timers.Timer(TIME_STEP);
 
             // while (run) {
             // Create a timer with a specified interval.
 
             // Hook up the Elapsed event for the timer.
-            flickerTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            flickerTimer.Elapsed += OnTimedEvent;
 
             // Set the Interval to 2 seconds (2000 milliseconds).
-            flickerTimer.Interval = TIME_STEP;
+            //flickerTimer.Interval = TIME_STEP;
             flickerTimer.Enabled = true;
 
 
             // If the timer is declared in a long-running method, use 
             // KeepAlive to prevent garbage collection from occurring 
             // before the method ends. 
-            GC.KeepAlive(flickerTimer);
+            //GC.KeepAlive(flickerTimer);
 
+        }
+
+        public void end_flicker()
+        {
+            flickerTimer.Enabled = false;
         }
 
         // Specify what you want to happen when the Elapsed event is raised. 
         private static void OnTimedEvent(object source, ElapsedEventArgs e)
         {
+            double intensity;
             if (current_wavelength == 456) {
                 current_wavelength = 570;
+                intensity = INTENSITY;
             }
             else {
                 current_wavelength = 456;
+                intensity = short_light_intensity;
             }
 
-            updateGooch(current_wavelength, BANDWIDTH, INTENSITY);
+            updateGooch(current_wavelength, BANDWIDTH, intensity);
         }
 
         private static void initializeGooch()
@@ -126,13 +135,11 @@ namespace UniqueHues
         private static void openShutter()
         {
             s_OL490.OpenShutter();
-            s_ShutterOpen = true;
         }
 
         public void closeShutter()
         {
             s_OL490.CloseShutter();
-            s_ShutterOpen = false;
         }
 
         private static void updateGooch(double wavelength, double bandwidth, double intensity)
@@ -143,29 +150,35 @@ namespace UniqueHues
             processErrorCode("ClrSpectrum()", errCode);
 
         }
-        private void record_data()
+        public void record_data()
         {
-            string data = short_light_intensity.ToString() + "\t" + FLICKER_SPEED.ToString() + "\t";
+            //string data = "light\tintensity\tlight\tintensity\tspeed(HZ)\n";
+            string data = "460\t" + short_light_intensity.ToString() + "\t";
+            data += "570\t" + INTENSITY + "\t";
+            data += FLICKER_SPEED.ToString() + "\t\n";
             data_record += data;
         }
 
         public static void clearGooch()
         {
             if (s_OL490.GetNumberOfLiveSpectrumPeaks() > 0) { s_OL490.ResetLiveSpectrum(); }
+        }
 
+        public void clrGooch()
+        {
+            if (s_OL490.GetNumberOfLiveSpectrumPeaks() > 0) { s_OL490.ResetLiveSpectrum(); }
         }
 
 
-        public void endFlicker()
+        public void end_trial()
         {
+            end_flicker();
             clearGooch();
             closeShutter();
 
-            record_data();
-
             // save results to file
             string name;
-            string dir = "C:/Users/Jay/Desktop/hues/data/rand/" + subject_name + "/";
+            string dir = "C:/Users/Jay/Desktop/macula/" + subject_name + "/";
 
             // create directory for subject if it doesn't already exist
             if (!Directory.Exists(dir))
@@ -176,7 +189,7 @@ namespace UniqueHues
             // get date
             DateTime date = DateTime.Today;
 
-            string basename = (dir + subject_name + "_" + hue.Substring(0, 1).ToUpper() +
+            string basename = (dir + subject_name +
                 "_" + date.ToString("Mddy")); // month day year
             int trial = 1;
             while (File.Exists(basename + "_" + trial.ToString() + ".txt"))
@@ -224,5 +237,6 @@ namespace UniqueHues
                 System.Runtime.Serialization.StreamingContext context) { }
         }
     }
-    }
+    
 }
+
