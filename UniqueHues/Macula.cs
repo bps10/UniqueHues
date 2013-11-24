@@ -19,32 +19,31 @@ namespace UniqueHues
         private double TIME_STEP;
         private static System.Timers.Timer flickerTimer;
 
-        public static double current_wavelength = 456;
+        public static double current_wavelength;
 
         private static double short_light_intensity;
 
         private static OL490SdkLibrary s_OL490 = new OL490SdkLibrary();
 
-        private static string data_record = "light\tintensity\tlight\tintensity\tspeed(HZ)\n";
-
+        private static string data_record;
         public static string subject_name;
 
-
-        public Macula(string name, float bandwidth=10, float intensity=100, 
-            double flicker_speed = 15.0)
+        public Macula(string name, float bandwidth=10, float intensity=50, 
+            double flicker_speed = 13.0)
         {   
             // set parameters
             BANDWIDTH = bandwidth;
-            INTENSITY = intensity / 3.0;
-            short_light_intensity = intensity / 3.0;
+            INTENSITY = 2;
+            short_light_intensity = intensity;
             FLICKER_SPEED = flicker_speed;
             subject_name = name;
-
+            data_record = "light\tintensity\tlight\tintensity\tspeed(HZ)\n";
+            current_wavelength = 456;
         }
 
         public void Set_Short_Intensity(double intensity)
         {
-            short_light_intensity = intensity / 3.0;
+            short_light_intensity = intensity;
             end_flicker();
             _updateMacula();
         }
@@ -154,7 +153,7 @@ namespace UniqueHues
         {
             //string data = "light\tintensity\tlight\tintensity\tspeed(HZ)\n";
             string data = "460\t" + short_light_intensity.ToString() + "\t";
-            data += "570\t" + INTENSITY + "\t";
+            data += "570\t" + INTENSITY.ToString() + "\t";
             data += FLICKER_SPEED.ToString() + "\t\n";
             data_record += data;
         }

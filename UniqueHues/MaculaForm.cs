@@ -12,7 +12,8 @@ namespace UniqueHues
     public partial class MaculaForm : Form
     {
         private static UniqueHues.Macula thisTrial;
-        private double INTENSITY = 100;
+        private double INTENSITY = 50;
+        private double STEP = 3;
         private double trial;
 
         public MaculaForm(string name)
@@ -20,7 +21,7 @@ namespace UniqueHues
             InitializeComponent();
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ForcedChoiceForm_FormClosing);
             this.KeyPreview = true;
-            this.KeyDown += new KeyEventHandler(KeyPress);
+            this.KeyDown += new KeyEventHandler(kPress);
             thisTrial = new UniqueHues.Macula(name);
             trial = 0;
             //thisTrial.RunMacula("name");
@@ -30,7 +31,7 @@ namespace UniqueHues
         {
             thisTrial.RunMacula();
         }
-        void KeyPress(object sender, KeyEventArgs e)
+        void kPress(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {
@@ -69,13 +70,19 @@ namespace UniqueHues
 
         public void low_arrow_select()
         {
-            INTENSITY -= 1;
+            if (INTENSITY - STEP > 0)
+            {
+                INTENSITY -= STEP;
+            }
             thisTrial.Set_Short_Intensity(INTENSITY);
         }
 
         public void high_arrow_select_()
         {
-            INTENSITY += 1;
+            if (INTENSITY + STEP < 100)
+            {
+                INTENSITY += STEP;
+            }
             thisTrial.Set_Short_Intensity(INTENSITY);
         }
         private void ForcedChoiceForm_FormClosing(object sender, FormClosingEventArgs e)
