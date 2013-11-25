@@ -16,15 +16,15 @@ namespace UniqueHues
         private double STEP = 3;
         private double trial;
 
-        public MaculaForm(string name)
+        public MaculaForm(string name, double frequency)
         {
             InitializeComponent();
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ForcedChoiceForm_FormClosing);
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(kPress);
-            thisTrial = new UniqueHues.Macula(name);
+            thisTrial = new UniqueHues.Macula(name, flicker_speed: frequency);
             trial = 0;
-            //thisTrial.RunMacula("name");
+            change_trial_text();
 
         }
         public void run()
@@ -46,6 +46,7 @@ namespace UniqueHues
             if (e.KeyCode == Keys.Space)
             {
                 record_data();
+                change_trial_text();
             }
         }
 
@@ -55,6 +56,7 @@ namespace UniqueHues
             if (trial < 5)
             {
                 thisTrial.record_data();
+                
                 // randomly select new starting position for blue intensity
                 Random rnd = new Random();
                 INTENSITY = (double)Convert.ToDouble(rnd.Next(1, 100));
@@ -74,6 +76,10 @@ namespace UniqueHues
             {
                 INTENSITY -= STEP;
             }
+            else
+            {
+                Console.Beep();
+            }
             thisTrial.Set_Short_Intensity(INTENSITY);
         }
 
@@ -83,6 +89,10 @@ namespace UniqueHues
             {
                 INTENSITY += STEP;
             }
+            else
+            {
+                Console.Beep();
+            }
             thisTrial.Set_Short_Intensity(INTENSITY);
         }
         private void ForcedChoiceForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -91,6 +101,11 @@ namespace UniqueHues
             thisTrial.end_flicker();
             thisTrial.clrGooch();
             thisTrial.closeShutter();
+        }
+
+        private void change_trial_text()
+        {
+            this.trialLabel.Text = (string)Convert.ToString(trial + 1);
         }
     }
 }

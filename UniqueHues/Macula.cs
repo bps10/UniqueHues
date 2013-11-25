@@ -76,14 +76,10 @@ namespace UniqueHues
 
             flickerTimer = new System.Timers.Timer(TIME_STEP);
 
-            // while (run) {
-            // Create a timer with a specified interval.
-
             // Hook up the Elapsed event for the timer.
             flickerTimer.Elapsed += OnTimedEvent;
 
-            // Set the Interval to 2 seconds (2000 milliseconds).
-            //flickerTimer.Interval = TIME_STEP;
+            // Enable the flicker
             flickerTimer.Enabled = true;
 
 
