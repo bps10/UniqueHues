@@ -17,6 +17,7 @@ namespace UniqueHues
             this.bandwidthBox.Text = (string)Convert.ToString(param["bandwidth"]);
             this.stepSizeBox.Text = (string)Convert.ToString(param["step"]);
             this.repeatsBox.Text = (string)Convert.ToString(param["repeats"]);
+            this.frequencyBox.Text = (string)Convert.ToString(param["frequency"]);
         }
 
         public void button1_Click(object sender, EventArgs e)
@@ -33,6 +34,7 @@ namespace UniqueHues
                 parameters.Add("bandwidth", (float)Convert.ToDouble(bandwidthBox.Text));
                 parameters.Add("step", (float)Convert.ToDouble(stepSizeBox.Text));
                 parameters.Add("repeats", (float)Convert.ToDouble(repeatsBox.Text));
+                parameters.Add("frequency", (float)Convert.ToDouble(frequencyBox.Text));
 
                 return parameters;
             }

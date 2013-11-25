@@ -12,25 +12,26 @@ namespace UniqueHues
     public partial class MaculaForm : Form
     {
         private static UniqueHues.Macula thisTrial;
-        private double INTENSITY = 100;
+        private double INTENSITY = 50;
+        private double STEP = 3;
         private double trial;
 
-        public MaculaForm(string name)
+        public MaculaForm(string name, double frequency)
         {
             InitializeComponent();
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ForcedChoiceForm_FormClosing);
             this.KeyPreview = true;
-            this.KeyDown += new KeyEventHandler(KeyPress);
-            thisTrial = new UniqueHues.Macula(name);
+            this.KeyDown += new KeyEventHandler(kPress);
+            thisTrial = new UniqueHues.Macula(name, flicker_speed: frequency);
             trial = 0;
-            //thisTrial.RunMacula("name");
+            change_trial_text();
 
         }
         public void run()
         {
             thisTrial.RunMacula();
         }
-        void KeyPress(object sender, KeyEventArgs e)
+        void kPress(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {
@@ -45,6 +46,7 @@ namespace UniqueHues
             if (e.KeyCode == Keys.Space)
             {
                 record_data();
+                change_trial_text();
             }
         }
 
@@ -54,6 +56,7 @@ namespace UniqueHues
             if (trial < 5)
             {
                 thisTrial.record_data();
+                
                 // randomly select new starting position for blue intensity
                 Random rnd = new Random();
                 INTENSITY = (double)Convert.ToDouble(rnd.Next(1, 100));
@@ -69,13 +72,27 @@ namespace UniqueHues
 
         public void low_arrow_select()
         {
-            INTENSITY -= 1;
+            if (INTENSITY - STEP > 0)
+            {
+                INTENSITY -= STEP;
+            }
+            else
+            {
+                Console.Beep();
+            }
             thisTrial.Set_Short_Intensity(INTENSITY);
         }
 
         public void high_arrow_select_()
         {
-            INTENSITY += 1;
+            if (INTENSITY + STEP < 100)
+            {
+                INTENSITY += STEP;
+            }
+            else
+            {
+                Console.Beep();
+            }
             thisTrial.Set_Short_Intensity(INTENSITY);
         }
         private void ForcedChoiceForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -84,6 +101,11 @@ namespace UniqueHues
             thisTrial.end_flicker();
             thisTrial.clrGooch();
             thisTrial.closeShutter();
+        }
+
+        private void change_trial_text()
+        {
+            this.trialLabel.Text = (string)Convert.ToString(trial + 1);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace UniqueHues
             PARAMETERS.Add("bandwidth", 10);
             PARAMETERS.Add("step", 5);
             PARAMETERS.Add("repeats", 10);
+            PARAMETERS.Add("frequency", 13);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -54,7 +55,7 @@ namespace UniqueHues
             }
             else if (maculaToolStripMenuItem.Checked)
             {
-                MaculaForm Macula_form = new MaculaForm(subject_name);
+                MaculaForm Macula_form = new MaculaForm(subject_name, PARAMETERS["frequency"]);
                 //Rand_form.changeLabel3text(label1_text, key1);
                 //Rand_form.changeLabel5text(label2_text, key2);
                 Macula_form.Show();

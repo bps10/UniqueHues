@@ -33,7 +33,7 @@ namespace UniqueHues
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
 
-            current_wavelength = 400;
+            current_wavelength = 420;
             changeLabel2text(current_wavelength.ToString() + " nm");
             initializeGooch();
             if (s_OL490.GetOL490ShutterState() == 0)
@@ -93,7 +93,7 @@ namespace UniqueHues
                 if (current_wavelength < 710)
                 {
                     
-                    current_wavelength += 10;
+                    current_wavelength += 5;
                     updateGooch();
                     //double wvlen = s_OL490.GetLiveSpectrumPeakWavelength(-1);
                     string wvlen = current_wavelength.ToString();
@@ -112,7 +112,7 @@ namespace UniqueHues
                 if (current_wavelength > 380)
                 {
 
-                    current_wavelength -= 10;
+                    current_wavelength -= 5;
                     updateGooch();
                     //double wvlen = s_OL490.GetLiveSpectrumPeakWavelength(-1);
                     string wvlen = current_wavelength.ToString();
