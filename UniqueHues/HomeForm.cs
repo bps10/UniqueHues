@@ -172,6 +172,18 @@ namespace UniqueHues
             PARAMETERS = param_form.EnteredValue;
         }
 
+        private void pixelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PixelNoise pix_form = new PixelNoise();
+            pix_form.Show();
+        }
+
+        private void eccentricityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EccentricityForm ecc_form = new EccentricityForm();
+            ecc_form.Show();
+        }
+
 
     }
 }

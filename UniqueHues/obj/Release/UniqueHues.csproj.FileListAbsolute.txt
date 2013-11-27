@@ -33,3 +33,16 @@ C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.e
 C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.pdb
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.Parameters.resources
 C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.MaculaForm.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\bin\Release\UniqueHues.exe
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\bin\Release\UniqueHues.pdb
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.csprojResolveAssemblyReference.cache
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.Calibrate.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.ForcedChoiceForm.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.MaculaForm.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.Parameters.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.HomeForm.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.PixelNoise.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.Properties.Resources.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.RandForcedChoiceForm.resources
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.csproj.GenerateResource.Cache
+C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.EccentricityForm.resources
