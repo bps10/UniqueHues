@@ -28,7 +28,7 @@ namespace UniqueHues
         private static string data_record;
         public static string subject_name;
 
-        public Macula(string name, float bandwidth=10, float intensity=50, 
+        public Macula(string name, float bandwidth=10, double intensity=85, 
             double flicker_speed = 13.0)
         {   
             // set parameters

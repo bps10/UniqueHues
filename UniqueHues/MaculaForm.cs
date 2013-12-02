@@ -12,9 +12,10 @@ namespace UniqueHues
     public partial class MaculaForm : Form
     {
         private static UniqueHues.Macula thisTrial;
-        private double INTENSITY = 50;
+        private double INTENSITY = 85;
         private double STEP = 3;
         private double trial;
+        private EccentricityForm ecc_form = new EccentricityForm();
 
         public MaculaForm(string name, double frequency)
         {
@@ -22,7 +23,13 @@ namespace UniqueHues
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ForcedChoiceForm_FormClosing);
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(kPress);
-            thisTrial = new UniqueHues.Macula(name, flicker_speed: frequency);
+
+            // call the blue eccentricity form
+            
+            ecc_form.Location = new Point(-1450, 60);
+            ecc_form.Show();
+
+            thisTrial = new UniqueHues.Macula(name, flicker_speed: frequency, intensity: INTENSITY);
             trial = 0;
             change_trial_text();
 
@@ -101,6 +108,9 @@ namespace UniqueHues
             thisTrial.end_flicker();
             thisTrial.clrGooch();
             thisTrial.closeShutter();
+
+            // close eccentricity form
+            ecc_form.Close();
         }
 
         private void change_trial_text()

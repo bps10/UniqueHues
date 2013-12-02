@@ -31,12 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.trialLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 28);
+            this.label1.Location = new System.Drawing.Point(16, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(447, 32);
             this.label1.TabIndex = 0;
@@ -45,7 +46,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(128, 106);
+            this.label2.Location = new System.Drawing.Point(128, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 32);
             this.label2.TabIndex = 1;
@@ -54,11 +55,20 @@
             // trialLabel
             // 
             this.trialLabel.AutoSize = true;
-            this.trialLabel.Location = new System.Drawing.Point(194, 167);
+            this.trialLabel.Location = new System.Drawing.Point(194, 182);
             this.trialLabel.Name = "trialLabel";
             this.trialLabel.Size = new System.Drawing.Size(62, 32);
             this.trialLabel.TabIndex = 2;
             this.trialLabel.Text = "trial";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(425, 32);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Hit spacebar to make a selection";
             // 
             // MaculaForm
             // 
@@ -66,6 +76,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(475, 245);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.trialLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -84,5 +95,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label trialLabel;
+        private System.Windows.Forms.Label label3;
     }
 }

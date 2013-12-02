@@ -27,7 +27,7 @@ namespace UniqueHues
             PARAMETERS.Add("bandwidth", 10);
             PARAMETERS.Add("step", 5);
             PARAMETERS.Add("repeats", 10);
-            PARAMETERS.Add("frequency", 13);
+            PARAMETERS.Add("frequency", 14);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -181,6 +181,7 @@ namespace UniqueHues
         private void eccentricityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EccentricityForm ecc_form = new EccentricityForm();
+            ecc_form.Location = new Point(-1450, 60);
             ecc_form.Show();
         }
 

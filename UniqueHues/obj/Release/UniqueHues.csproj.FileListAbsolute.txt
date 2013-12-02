@@ -46,3 +46,5 @@ C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.P
 C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.RandForcedChoiceForm.resources
 C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.csproj.GenerateResource.Cache
 C:\Users\Brian\Documents\Projects\UniqueHues\UniqueHues\obj\Release\UniqueHues.EccentricityForm.resources
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.EccentricityForm.resources
+C:\Users\Jay\Documents\UniqueHues\UniqueHues\obj\Release\UniqueHues.PixelNoise.resources
